@@ -1,0 +1,57 @@
+.loginPage {
+    background: url('images/invoices.jpg');
+    background: linear-gradient(rgba(11,11,11, 0.5), rgba(10,10,10, 0.5)), url(images/invoices.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+
+}
+.condition {
+  color: hwb(0 50% 17%);
+}
+
+/* Style pour l'effet de survol */
+.nav-link {
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.link  {
+   color: white;
+  font-weight: bold;
+  text-decoration: none;
+   text-align: center;
+
+}
+
+.loginForm {
+    width: 60%; /*Largeur par défaut pour les grands écrans */
+     color: white;
+    background-color: rgba(1, 1, 1, 0.092);
+
+}
+.custom-checkbox {
+    cursor: pointer;
+  }
+  
+ h2 {
+    text-align: center;
+ }
+
+ .lf:hover {
+  background-color: white;
+  color: black;
+ }
+
+  /* Requête média pour les petits écrans (smartphones) */
+  @media screen and (max-width: 576px) {
+    .loginForm {
+      width: 70%; /* Réduire la largeur pour les petits écrans */
+    }
+  }
+/* 
+.loginForm {
+} */

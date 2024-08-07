@@ -26,7 +26,7 @@ const Modifyarticle = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/home/category')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/category')
             .then(response => {
                 setData(response.data);
             })
@@ -35,7 +35,7 @@ const Modifyarticle = () => {
             });
 
 
-            axios.get('http://localhost:3000/home/dataitem/'+id)
+            axios.get('https://invoice-management-2-wnw6.onrender.com/home/dataitem/'+id)
             .then(response => {
     
               setArticle( response.data);
@@ -66,7 +66,7 @@ const Modifyarticle = () => {
         console.log(article.id_category);
 
 
-        axios.put('http://localhost:3000/home/updateitem', formData)
+        axios.put('https://invoice-management-2-wnw6.onrender.com/home/updateitem', formData)
 
             .then(result => {
                 if (result.data.loginStatus) {

@@ -47,7 +47,7 @@ const Createaccount = () => {
 
      event.preventDefault();
     
-     axios.post('http://localhost:3000/auth/inscrire', values)
+     axios.post('https://invoice-management-2-wnw6.onrender.com/auth/inscrire', values)
      .then(result => 
       {
         if(result.data.loginStatus)

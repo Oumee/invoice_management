@@ -1,6 +1,6 @@
 .loginPage {
-    background: url('images/invoices.jpg');
-    background: linear-gradient(rgba(11,11,11, 0.5), rgba(10,10,10, 0.5)), url(images/invoices.jpg);
+    background: url('C:\Users\kalto\INVOICES\frontend\dist\images\invoices.jpg');
+    background: linear-gradient(rgba(11,11,11, 0.5), rgba(10,10,10, 0.5)), url(C:\Users\kalto\INVOICES\frontend\dist\images\invoices.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 120%;

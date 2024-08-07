@@ -89,7 +89,7 @@ const AddInvoice = () => {
     // useeffect
     useEffect(() => {
 
-        axios.get('http://localhost:3000/home/clients')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/clients')
             .then(response => {
 
                 setData(response.data);
@@ -100,7 +100,7 @@ const AddInvoice = () => {
             });
 
 
-        axios.get('http://localhost:3000/home/item')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/item')
             .then(response => {
                 setItem(response.data);
             })
@@ -124,7 +124,7 @@ const AddInvoice = () => {
         formData.append('status', invoice.status);
         formData.append('client_id', invoice.client_id);
 
-        axios.post('http://localhost:3000/home/addinvoice', formData)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/home/addinvoice', formData)
 
             .then(result => {
                 if (result.data.loginStatus) {

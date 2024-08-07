@@ -47,7 +47,7 @@ const AddClient = () => {
         formData.append('patent', client.patent);
         formData.append('payment_terms', client.payment_terms);
  
-        axios.post('http://localhost:3000/home/addclient', formData)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/home/addclient', formData)
 
             .then(result => {
                 if (result.data.loginStatus) {

@@ -23,7 +23,7 @@ const Modifycategory = () => {
     });
  
     useEffect(() => {
-        axios.get('http://localhost:3000/home/datamodify/'+id)
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/datamodify/'+id)
         .then(response => {
 
           setValues({...values, name: response.data.name, description:response.data.description, image: response.data.image });
@@ -49,7 +49,7 @@ const Modifycategory = () => {
         formData.append('description',values.description);
         formData.append('id',values.id);
 
-        axios.put('http://localhost:3000/home/updatecategory', formData)
+        axios.put('https://invoice-management-2-wnw6.onrender.com/home/updatecategory', formData)
         .then(result => 
          {
            if(result.data.loginStatus)

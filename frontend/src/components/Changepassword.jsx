@@ -47,7 +47,7 @@ const Changepassword = () => {
 
       event.preventDefault()
     
-      axios.post('http://localhost:3000/auth/changepassword', values)
+      axios.post('https://invoice-management-2-wnw6.onrender.com/auth/changepassword', values)
       .then(result => 
       {
         if(result.data.loginStatus)

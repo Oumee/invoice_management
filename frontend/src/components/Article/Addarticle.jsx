@@ -26,7 +26,7 @@ const Addarticle = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/home/category')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/category')
             .then(response => {
                 setData(response.data);
             })
@@ -52,7 +52,7 @@ const Addarticle = () => {
         console.log(article.id_category);
 
 
-        axios.post('http://localhost:3000/home/addarticle', formData)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/home/addarticle', formData)
 
             .then(result => {
                 if (result.data.loginStatus) {

@@ -31,7 +31,7 @@ const Verifyaccount = () => {
 
        event.preventDefault();
        
-       axios.post('http://localhost:3000/auth/sendcode', values)
+       axios.post('https://invoice-management-2-wnw6.onrender.com/auth/sendcode', values)
        .then(result => 
         {
           if(result.data.loginStatus)
@@ -52,7 +52,7 @@ const Verifyaccount = () => {
        
         event.preventDefault();
        
-        axios.post('http://localhost:3000/auth/createaccount', values)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/auth/createaccount', values)
         .then(result => 
          {
            if(result.data.loginStatus)

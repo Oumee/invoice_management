@@ -42,7 +42,7 @@ const handleDeleteWithPopup = (itemNumber) => {
      // useeffect
     useEffect(() => {
  
-        axios.get('http://localhost:3000/home/category')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/category')
             .then(response => {
                 setData(response.data);
             })
@@ -53,7 +53,7 @@ const handleDeleteWithPopup = (itemNumber) => {
 
     const handleDelete = (id) => {
 
-    axios.delete('http://localhost:3000/home/deletecategory/'+id)
+    axios.delete('https://invoice-management-2-wnw6.onrender.com/home/deletecategory/'+id)
         .then( res=> {
             //  navigate('/Dashboard');
             window.location.reload(); 
@@ -129,7 +129,7 @@ const handleDeleteWithPopup = (itemNumber) => {
                                     <td>{item.description}</td>
                                     <td>
                                         <img
-                                            src={`http://localhost:3000/images/${item.image}`}
+                                            src={`https://invoice-management-2-wnw6.onrender.com/images/${item.image}`}
                                             width="50"
                                             height="50"
                                             className="rounded-circle img-thumbnail"

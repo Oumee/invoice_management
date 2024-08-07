@@ -32,7 +32,7 @@ const ModifyClient = () => {
  
  
     useEffect(() => {
-        axios.get('http://localhost:3000/home/client/'+id)
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/client/'+id)
         .then(response => {
          setClient(response.data)
         })
@@ -63,7 +63,7 @@ const ModifyClient = () => {
         formData.append('payment_terms', client.payment_terms);
         formData.append('id',client.id);
 
-        axios.put('http://localhost:3000/home/updateclient', formData)
+        axios.put('https://invoice-management-2-wnw6.onrender.com/home/updateclient', formData)
         .then(result => 
          {
            if(result.data.loginStatus)

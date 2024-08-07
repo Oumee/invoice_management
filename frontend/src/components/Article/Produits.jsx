@@ -43,7 +43,7 @@ const Produits = () => {
     // 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/home/item')
+        axios.get('https://invoice-management-2-wnw6.onrender.com/home/item')
             .then(response => {
                 setData(response.data);
             })
@@ -54,7 +54,7 @@ const Produits = () => {
 
     const handleDelete = (id) => {
 
-        axios.delete('http://localhost:3000/home/deletearticle/' + id)
+        axios.delete('https://invoice-management-2-wnw6.onrender.com/home/deletearticle/' + id)
             .then(res => {
                  window.location.reload(); 
                 toast.warning('article supprimé avec succès !');
@@ -134,7 +134,7 @@ const Produits = () => {
                                                 <td>{item.quantite}</td>
                                                 <td>
                                                     <img
-                                                        src={`http://localhost:3000/images/${item.image}`}
+                                                        src={`https://invoice-management-2-wnw6.onrender.com/images/${item.image}`}
                                                         width="50"
                                                         height="50"
                                                         className="rounded-circle img-thumbnail"

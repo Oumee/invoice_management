@@ -24,7 +24,7 @@ const Forgetpassword = () => {
 
        event.preventDefault();
        
-       axios.post('http://localhost:3000/auth/forgetpassword', values)
+       axios.post('https://invoice-management-2-wnw6.onrender.com/auth/forgetpassword', values)
        .then(result => 
         {
           if(result.data.loginStatus)
@@ -44,7 +44,7 @@ const Forgetpassword = () => {
        
         event.preventDefault();
        
-        axios.post('http://localhost:3000/auth/verify', code)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/auth/verify', code)
         .then(result => 
          {
            if(result.data.loginStatus)

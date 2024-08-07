@@ -33,7 +33,7 @@ const Addcategory = () => {
         formData.append('name', category.name);
         formData.append('description',category.description);
 
-        axios.post('http://localhost:3000/home/addcategory', formData)
+        axios.post('https://invoice-management-2-wnw6.onrender.com/home/addcategory', formData)
         
         .then(result => 
          {

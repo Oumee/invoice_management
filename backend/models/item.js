@@ -18,10 +18,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DECIMAL(10, 2)
         },
         sale_price: {
-            type: DataTypes.DECIMAL(10, 2)
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+            defaultValue: 0.00,
+        
         },
         quantite: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            defaultValue: 0.00,
+
         },
         image: {
             type: DataTypes.STRING

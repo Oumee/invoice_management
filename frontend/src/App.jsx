@@ -35,7 +35,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />}></Route>
+        {/* <Route path='/login' element={<Login />}></Route> */}
         <Route path='/Dashboard' element={<Dashboard />}>
 
            <Route path='Categories' element={<Categories />}> </Route>
@@ -60,7 +60,7 @@ function App() {
         <Route path='/conditions' element={<Conditions />}></Route>
         <Route path='/Createaccount' element={<Createaccount />}></Route>
         <Route path='/Verifyaccount/:email/:password' element={<Verifyaccount />}></Route>
-        <Route path='/' element={<Home />}></Route>
+        <Route path='/' element={<Login />}></Route>
  
        </Routes>
     </BrowserRouter>

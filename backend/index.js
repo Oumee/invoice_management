@@ -11,22 +11,22 @@ const cors = require('cors')
 // application
 const app = express()
 
-// app.use(cors({
-//     origin: [
-//         // "http://localhost:5173", // for local development
-//         //      "https://66b37d654d83b2113aa912ad--marokkobizitinvoicedev.netlify.app",
-//         //      "https://marokkobizinvoice.com", // your Netlify domain
-//              "*"
-//             ], 
-//     methods: ['GET', 'POST','PUT', 'DELETE'],
-//     credentials: true
-// }));
-
 app.use(cors({
-    origin: '*', // Permet toutes les origines (pas recommandé pour la production)
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: false
+    origin: [
+        "http://localhost:5173", // for local development
+            //  "https://66b37d654d83b2113aa912ad--marokkobizitinvoicedev.netlify.app",
+             "https://marokkobizinvoice.com", // your Netlify domain
+           
+            ], 
+    methods: ['GET', 'POST','PUT', 'DELETE'],
+    credentials: true
 }));
+
+// app.use(cors({
+//     origin: '*', // Permet toutes les origines (pas recommandé pour la production)
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: false
+// }));
 
 
 app.use(express.static("public"))

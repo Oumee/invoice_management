@@ -16,14 +16,15 @@ const AddInvoice = () => {
     const [visible, setVisible] = useState(false);
     const [rows, setRows] = useState([]);
     const [i, setI] = useState(1);
-    const [newRow, setNewRow] = useState({ id:i, item_number: '', sale_price: '', quantite: '' }); // État pour le nouvel enregistrement  
+    const [total_ht, setTotal_ht] = useState();
+    const [newRow, setNewRow] = useState({ id: i, item_number: '', sale_price: '', quantite: '' }); // État pour le nouvel enregistrement  
 
 
     const [invoice, setInvoice] = useState({
         name: '',
         issue_date: '',
         deadline: '',
-        total_ht: '',
+        // total_ht: '',
         tva: '',
         total_ttc: '',
         status: '',
@@ -33,36 +34,35 @@ const AddInvoice = () => {
     });
 
     // Fonction pour ajouter une nouvelle ligne  
-    const addRow = async (e) => {
+    const addRow = (e) => {
 
         e.preventDefault(); // Empêche le rechargement de la page  
 
-        // if ((rows.length === 0) || (newRow.item_number !== '' && newRow.sale_price !== '' && newRow.quantite !== '')) {
-       
-           
-             await setI(x => x+1)
-             console.log(i);
-              await setNewRow({ id: i, item_number: '', sale_price: '', quantite: '' })
-       
-            setRows([...rows, newRow]); // Ajout de la nouvelle ligne à l'état  
-            console.log(i);
-            console.log(rows);
-        // } else {
-        //     toast.warning('Remplir tous les champs !');
-        // }
+        // Incrémentez `i` et utilisez la nouvelle valeur pour `newRow`
+        setI((prevI) => {
+            const newI = prevI + 1;
+            const newRow = { id: newI, item_number: '', sale_price: '', quantite: '' };
+
+            // Ajout de la nouvelle ligne à l'état
+            setRows((prevRows) => [...prevRows, newRow]);
+
+            return newI; // Retournez la nouvelle valeur de `i`
+        });
     };
 
     // suppression
     const deleteItem = async (i) => {
 
-        console.log("deleting indix",i);
-        console.log("rows",rows);
+        console.log("deleting indix", i);
+        console.log("rows", rows);
         const newRows = await rows.filter(row => row.id !== i);
 
-    setRows(newRows);
+        setRows(newRows);
 
     }
 
+
+    // affichage de champs
     const block = (event) => {
 
         if (event.target.value === "")
@@ -78,14 +78,32 @@ const AddInvoice = () => {
         navigate(-1); // Va à la page précédente
     };
 
+    //calculate 
+    const calculate_total_ht = () => {
+        setTotal_ht(0);
+        let i=0;
+        rows.reduce((total, row) => {
+            i++;
+            const salePrice = row.sale_price || 0;
+            const quantite = row.quantite || 0;
+            console.log("sale ",salePrice,i);
+            console.log("quantite ",quantite,i);
 
-    const handleChange = (index, field, value) => {  
-        const updatedRows = [...rows]; // Créez une copie de l'état actuel  
+            setTotal_ht(prevTotal_ht => prevTotal_ht + (salePrice * quantite));
+            console.log("total ht ",total_ht);
+        });
+    };
+
+
+
+
+    const handleChange = (index, field, value) => {
+        const updatedRows = [...rows]; // une copie de l'état actuel  
         updatedRows[index] = { ...updatedRows[index], [field]: value }; // Mettez à jour le champ spécifié  
         setRows(updatedRows); // Mettez à jour l'état  
         console.log(rows);
-    };  
-    
+    };
+
     // useeffect
     useEffect(() => {
 
@@ -185,7 +203,11 @@ const AddInvoice = () => {
                                                     type="date"
                                                     className="form-control"
                                                     id="inputCompanyName"
-                                                    onChange={(event) => setInvoice({ ...invoice, issue_date: event.target.value })}
+                                                    onChange={(event) => {
+                                                        setInvoice({ ...invoice, issue_date: event.target.value });
+
+                                                    }}
+
 
                                                 />
                                             </div>
@@ -226,10 +248,10 @@ const AddInvoice = () => {
                                             </thead>
                                             <tbody>
                                                 {rows.map((row, index) => (
-                                                
+
                                                     <tr key={row.id}>
                                                         <td> <select className="form-select" aria-label="Disabled select example" onChange={(event) => handleChange(index, 'item_number', event.target.value)}
-                                                        >
+                                                            required>
                                                             <option value="" > Choisir un article </option>
                                                             {item.map((item) => (
                                                                 <option key={item.item_number} value={item.item_number}>{item.item_text}</option>
@@ -239,24 +261,27 @@ const AddInvoice = () => {
                                                             type="text"
                                                             className="form-control"
                                                             id="item_price"
-                                                            onChange={(event) => handleChange(index, 'sale_price', event.target.value)}
-
+                                                            onChange={(event) => {
+                                                                handleChange(index, 'sale_price', event.target.value)
+                                                                calculate_total_ht();
+                                                            }}
+                                                            required
                                                         /></td>
                                                         <td> <input
                                                             type="number"
                                                             className="form-control"
                                                             id="quantity"
                                                             onChange={(event) => handleChange(index, 'quantite', event.target.value)}
- 
+                                                            required
                                                         /></td>
                                                         <td>
                                                             <button
                                                                 className="btn btn-sm btn-danger"
                                                                 type='button'
                                                                 onClick={() => {
-                                                                    console.log("row.id",row.id);
+                                                                    console.log("row.id", row.id);
                                                                     deleteItem(row.id);
-                                                                    
+
                                                                 }}
                                                                 title="Supprimer"
                                                             >
@@ -277,7 +302,7 @@ const AddInvoice = () => {
                                                     type="text"
                                                     className="form-control"
                                                     id="total_ht"
-                                                    onChange={(event) => setInvoice({ ...invoice, total_ht: event.target.value })}
+                                                    value={total_ht || ''}
                                                     readOnly
                                                 />
                                             </div>
